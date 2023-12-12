@@ -63,6 +63,13 @@
     }
 
     async function getFriendship() {
+      const response = await liff.getFriendship()
+      document.getElementById("friendship").append(friend.friendFlag)
+      if (!friend.friendFlag) {
+        if (confirm("Plz add bot")) {
+          window.location = "https://line.me/R/ti/p/@522okxxh"
+        }
+      }
     }
 
     async function sendMsg() {
