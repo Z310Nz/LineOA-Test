@@ -63,9 +63,24 @@
     }
 
     async function getFriendship() {
+      const response = await liff.getFriendship();
+      if (response.friendFlag) {
+        document.getElementById("friendship").append("Friend")
+      } else {
+        document.getElementById("friendship").append("Not Friend")
+      }
     }
 
     async function sendMsg() {
+      if (liff.getContext().type !="none") {
+        await liff.sendMessages([
+        {
+          "type": "sticker",
+          "stickerId": 1,
+          "packageId": 1
+        }])
+        alert("Message sent")
+      }
     }
 
     function getContext() {
@@ -105,7 +120,7 @@
       getEnvironment()
       getUserProfile()
       getContext()
-      // getFriendship()
+      getFriendship()
       // createUniversalLink()
     }
     main()
